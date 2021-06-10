@@ -18,6 +18,8 @@
     "test:e2e:generate:report": "yarn -s mochawesome-merge \"tests/e2e/report/*.json\" > \"tests/e2e/report.json\" && yarn -s marge tests/e2e/report.json -o \"tests/e2e/report\""
   },
   "dependencies": {
+    "@bloomreach/spa-sdk": "0.3.0-saas",
+    "@bloomreach/vue-sdk": "0.3.0-saas",
     "@nuxtjs/pwa": "^3.2.2",
     "@storefront-ui/vue": "0.10.3",
     "@vue-storefront/commercetools": "^1.2.0",
@@ -36,8 +38,8 @@
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-jest": "^24.1.0",
     "cypress": "^6.6.0",
-    "cypress-tags": "^0.0.20",
     "cypress-pipe": "^2.0.0",
+    "cypress-tags": "^0.0.20",
     "jest": "^24.1.0",
     "mochawesome": "^6.2.2",
     "mochawesome-merge": "^4.2.0",

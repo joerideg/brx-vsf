@@ -1,5 +1,7 @@
 <template>
   <div id="home">
+    <br-page :configuration="configuration" :mapping="mapping" :page="page" />
+
     <LazyHydrate when-idle>
       <SfHero class="hero">
         <SfHeroItem
@@ -108,6 +110,11 @@ import InstagramFeed from '~/components/InstagramFeed.vue';
 import MobileStoreBanner from '~/components/MobileStoreBanner.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 
+import { initialize } from '@bloomreach/spa-sdk';
+import { BrPage } from '@bloomreach/vue-sdk';
+import axios from 'axios';
+import Content from '~/components/BRX/BrContent.vue';
+
 export default {
   name: 'Home',
   components: {
@@ -124,10 +131,28 @@ export default {
     SfArrow,
     SfButton,
     MobileStoreBanner,
-    LazyHydrate
+    LazyHydrate,
+    BrPage,
   },
+  async asyncData(context) {
+    const configuration = {
+      endpointQueryParameter: 'endpoint',
+      path: context.route.fullPath,
+    };
+
+    const page = await initialize({
+      ...configuration,
+      httpClient: axios,
+    });
+
+    return { configuration, page };
+  },
+
   data() {
     return {
+      mapping: {
+        Content,
+      },
       heroes: [
         {
           title: 'Colorful summer dresses are already in store',
