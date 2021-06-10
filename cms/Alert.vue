@@ -1,5 +1,9 @@
 <template>
-  <div v-if="document" :class="{ 'has-edit-button': page.isPreview() }">
+  <div
+    v-if="document"
+    class="jumbotron mb-3"
+    :class="{ 'has-edit-button': true }"
+  >
     <br-manage-content-button :content="document" />
     <SfAlert :message="'test'" :type="'info'" />
   </div>
@@ -15,12 +19,6 @@ export default Vue.extend({
     SfAlert,
   },
   props: {
-    message: {
-      type: String,
-    },
-    type: {
-      type: String,
-    },
     component: {},
     page: {},
   },
@@ -29,6 +27,9 @@ export default Vue.extend({
       const document = this.page.getDocument()
 
       return document
+    },
+    data() {
+      return this.document?.getData()
     },
   },
 })
