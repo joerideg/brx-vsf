@@ -44,8 +44,8 @@ export default Vue.extend({
       return {
         endpoint: `https://${this.environment}.bloomreach.io/delivery/site/v1/channels/${this.channel}/pages/${this.url}`,
         httpClient: axios,
-        // path: this.$root.$route.fullPath,
-        // endpointQueryParameter: 'endpoint',
+        endpointQueryParameter: 'endpoint',
+        path: this.$root.$route.fullPath,
       }
     },
   },
