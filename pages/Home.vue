@@ -148,6 +148,23 @@ export default {
     return { configuration, page };
   },
 
+  watch: {
+    $route: {
+      deep: true,
+    },
+    handler() {
+      this.$set(this.configuration, 'path', this.$route.fullPath);
+    }
+  },
+
+  beforeMount() {
+    this.configuration.httpClient = axios;
+  },
+
+  beforeUpdate() {
+    this.configuration.httpClient = axios;
+  },
+
   data() {
     return {
       mapping: {
