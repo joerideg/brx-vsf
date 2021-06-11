@@ -2,7 +2,7 @@
   <div
     v-if="document"
     class="jumbotron mb-3"
-    :class="{ 'has-edit-button': true }"
+    :class="{ 'has-edit-button': page.isPreview() }"
   >
     <br-manage-content-button :content="document" />
     <SfAlert :message="'test'" :type="'info'" />
